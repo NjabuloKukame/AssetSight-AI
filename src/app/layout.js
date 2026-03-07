@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "NexEra AI Training",
+  title: "AssetSight AI Training",
   description: "An AI-powered web platform exploring interactive 3D visualization and training avatars. Users can control a humanoid avatar using natural language, combining real-time 3D rendering with AI-driven command interpretation.",
 };
 

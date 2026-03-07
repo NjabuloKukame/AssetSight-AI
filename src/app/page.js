@@ -11,7 +11,7 @@ export default function Home() {
             <span className="text-sm text-black/80 font-medium">AI-Powered Training Platform</span>
           </div>
           <h1 className="text-6xl font-bold text-black mb-6 tracking-tight">
-            NexEra AI Training
+            Asset Sight AI Training
           </h1>
           <p className="text-xl text-black/60 max-w-2xl mx-auto">
             Experimental AI-Driven Tools For Human Learning and Training

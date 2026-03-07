@@ -104,23 +104,23 @@ export default function Prototype1() {
 
     return (
         <div className="min-h-screen bg-white">
-            <div className="max-w-7xl mx-auto px-6 py-12">
-                <div className="mb-12 text-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+                <div className="mb-8 sm:mb-12 text-center">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 border border-black/10 mb-2">
                         <Sparkles className="w-4 h-4 text-black" />
-                        <span className="text-sm text-black/80 font-medium">AI-Powered 3D Generation</span>
+                        <span className="text-xs sm:text-sm text-black/80 font-medium">AI-Powered 3D Generation</span>
                     </div>
-                    <h1 className="text-3xl font-bold text-black mb-2 tracking-tight">
+                    <h1 className="text-2xl sm:text-3xl font-bold text-black mb-2 tracking-tight">
                         Generate 3D Training Asset
                     </h1>
-                    <p className="text-black/60 text-lg max-w-2xl mx-auto">
+                    <p className="text-black/60 text-base sm:text-lg max-w-2xl mx-auto px-4">
                         Create interactive 3D models for your training modules
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-8">
-                    <div className="space-y-6">
-                        <div className="bg-black/5 backdrop-blur-xl rounded-2xl border border-black/10 p-8 space-y-6">
+                <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
+                    <div className="space-y-4 sm:space-y-6">
+                        <div className="bg-black/5 backdrop-blur-xl rounded-2xl border border-black/10 p-4 sm:p-8 space-y-4 sm:space-y-6">
                             <input
                                 type="text"
                                 value={textInput}
@@ -154,7 +154,7 @@ export default function Prototype1() {
                         </div>
 
                         {(isLoading || aiSummary || error) && (
-                            <div className="bg-black/5 backdrop-blur-xl rounded-2xl border border-black/10 p-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                            <div className="bg-black/5 backdrop-blur-xl rounded-2xl border border-black/10 p-4 sm:p-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                                 <div className="flex items-start gap-3 mb-4">
                                     <div className="p-2 bg-black/10 rounded-lg">
                                         <Sparkles className="w-5 h-5 text-black" />
@@ -182,11 +182,11 @@ export default function Prototype1() {
                             </div>
                         )}
 
-                        <div className="bg-black/5 backdrop-blur-xl rounded-2xl border border-black/10 p-8">
-                            <h3 className="text-lg font-semibold text-black mb-6">
+                        <div className="bg-black/5 backdrop-blur-xl rounded-2xl border border-black/10 p-4 sm:p-8">
+                            <h3 className="text-base sm:text-lg font-semibold text-black mb-4 sm:mb-6">
                                 Quick Commands
                             </h3>
-                            <div className="grid grid-cols-4 gap-3">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
                                 {[
                                     'Fire Extinguisher',
                                     'Drill',
@@ -208,7 +208,7 @@ export default function Prototype1() {
                                     <button
                                         key={example}
                                         onClick={() => setTextInput(example)}
-                                        className="px-2 py-2.5 bg-black/5 hover:bg-black/10 border border-black/10 hover:border-black/20 rounded-lg text-sm text-black/80 hover:text-black transition-all text-left"
+                                        className="px-2 sm:px-3 py-2 sm:py-2.5 bg-black/5 hover:bg-black/10 border border-black/10 hover:border-black/20 rounded-lg text-xs sm:text-sm text-black/80 hover:text-black transition-all text-left leading-tight"
                                     >
                                         {example}
                                     </button>
