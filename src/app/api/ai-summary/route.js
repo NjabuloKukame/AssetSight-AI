@@ -1,4 +1,37 @@
+import { Ratelimit } from '@upstash/ratelimit';
+import { Redis } from '@upstash/redis';
+
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(10, '1 m'), // 10 requests per minute per IP
+  analytics: true,
+});
+
 export async function POST(req) {
+  // ── Rate Limiting ──────────────────────────────────────────
+  const ip =
+    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    req.headers.get('x-real-ip') ||
+    '127.0.0.1';
+
+  const { success, remaining, reset } = await ratelimit.limit(ip);
+
+  if (!success) {
+    const retryAfter = Math.ceil((reset - Date.now()) / 1000);
+    return Response.json(
+      { error: `Too many requests. Try again in ${retryAfter}s.` },
+      {
+        status: 429,
+        headers: {
+          'Retry-After': String(retryAfter),
+          'X-RateLimit-Limit': '10',
+          'X-RateLimit-Remaining': '0',
+        },
+      }
+    );
+  }
+  // ──────────────────────────────────────────────────────────
+
   try {
     const { objectName } = await req.json();
 

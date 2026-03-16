@@ -129,11 +129,16 @@ export default function Prototype2() {
                         {countdown}s
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm text-blue-800 mb-2 leading-relaxed">
-                      Use <span className="font-mono bg-white px-1.5 py-0.5 rounded text-xs">"then"</span>, <span className="font-mono bg-white px-1.5 py-0.5 rounded text-xs">"and"</span>, or <span className="font-mono bg-white px-1.5 py-0.5 rounded text-xs">"followed by"</span>
+                    <p className="text-sm text-blue-800 mb-3 leading-relaxed">
+                      You Can Chain Multiple Animations Using Natural Language Connectors Like <span className="font-mono bg-white px-2 py-1 rounded">"then"</span>, <span className="font-mono bg-white px-2 py-1 rounded">"and"</span>, or <span className="font-mono bg-white px-2 py-1 rounded">"followed by"</span>.
                     </p>
                     <div className="text-xs sm:text-sm text-blue-800">
-                      <span className="font-semibold">Try:</span> <span className="font-mono bg-white px-1.5 py-0.5 rounded">"Walk Then Wave"</span>
+                      <span className="font-semibold">Examples:</span>
+                      <ul className="text-sm text-blue-800 space-y-1 ml-2">
+                        <li>✓ <span className="font-mono bg-white px-1.5 py-0.5 rounded text-xs">"Walk Then Wave"</span></li>
+                        <li>✓ <span className="font-mono bg-white px-1.5 py-0.5 rounded text-xs">"Jog And Salute And Point"</span></li>
+                        <li>✓ <span className="font-mono bg-white px-1.5 py-0.5 rounded text-xs">"Dance Followed by Jump"</span></li>
+                      </ul>
                     </div>
                   </div>
                 </div>
