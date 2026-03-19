@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Header from './components/Header/page.js'
 import "./globals.css";
 
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
         {children}
+        <Analytics />
       </body>
     </html>
   );
