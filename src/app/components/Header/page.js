@@ -17,7 +17,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <div className="p-1.5 bg-black rounded-lg group-hover:scale-110 transition-transform">
-              <Sparkles className="w-4 h-4 text-white" />
+              {/* <Sparkles className="w-4 h-4 text-white" /> */}
             </div>
             <span className="text-lg sm:text-xl font-bold text-black hidden sm:inline">Asset Sight AI Training</span>
             <span className="text-lg font-bold text-black sm:hidden">Asset Sight</span>

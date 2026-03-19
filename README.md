@@ -1,4 +1,4 @@
-# 🧠 AI-Driven 3D Training Visualization Platform
+# AI-Driven 3D Training Visualization Platform
 
 This repository contains a web-based prototype platform that explores how AI, 3D visualization, and interactive avatars can be combined to support training, learning, and contextual understanding.
 
@@ -8,7 +8,7 @@ The project consists of two prototypes, each building on the previous one to dem
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 The platform demonstrates how:
 * **Natural language** can be interpreted into structured actions.
@@ -21,7 +21,7 @@ The system is split into two main prototypes:
 
 ---
 
-## 🧩 Prototype 1 – 3D Asset Visualization
+## Prototype 1 – 3D Asset Visualization
 
 ### Description
 Prototype 1 focuses on rendering and interacting with 3D assets in a web environment. It demonstrates how static or semi-interactive 3D models can be viewed, inspected, and controlled using a browser-based 3D canvas.
@@ -37,7 +37,7 @@ This prototype establishes the visual and technical foundation for later AI-driv
 
 ---
 
-## 🧑‍🏫 Prototype 2 – AI-Driven Training Avatar
+## Prototype 2 – AI-Driven Training Avatar
 
 ### Description
 Prototype 2 introduces a humanoid training avatar that responds to natural language commands interpreted by AI. Users can type commands such as:
@@ -63,7 +63,7 @@ The system interprets these commands and plays the corresponding skeletal animat
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 ### Frontend
 * **Next.js** (React)
@@ -83,7 +83,7 @@ The system interprets these commands and plays the corresponding skeletal animat
 
 ---
 
-## 🤖 AI Systems Used
+## AI Systems Used
 
 ### Groq (LLM Inference)
 Groq is used to interpret natural language commands and map them to structured avatar actions.
@@ -105,7 +105,7 @@ Imagga is used for:
 
 ---
 
-## ⚠️ Known Limitations
+## Known Limitations
 * Animations are predefined: No procedural motion (physics-based).
 * No physics-based interaction: Limited interaction with objects.
 * Limited environmental awareness: The avatar is not aware of surroundings.
@@ -114,7 +114,47 @@ Imagga is used for:
 
 ---
 
-## 🔮 Next Steps & Improvements
+## Rate Limiting
+
+This project uses [Upstash Redis](https://upstash.com/) to protect AI-powered endpoints from abuse via a distributed sliding window rate limiter.
+
+### Protected Endpoints
+
+| Endpoint | Limit |
+|---|---|
+| `POST /api/ai-summary` | 10 requests / minute per IP |
+| `POST /api/interpret-command` | 10 requests / minute per IP |
+| `POST /api/classify-image` | 10 requests / minute per IP |
+
+> All three endpoints share a combined rate limit counter per IP. A single client is capped at 10 requests per minute across all endpoints.
+
+### Implementation
+
+Rate limiting is handled by [`@upstash/ratelimit`](https://github.com/upstash/ratelimit) using a **sliding window** algorithm. When a limit is exceeded, the API returns a `429 Too Many Requests` response with a `Retry-After` header indicating when the client may retry.
+```json
+{
+  "error": "Too many requests. Try again in 42s."
+}
+```
+
+### Configuration
+
+Install the required packages:
+```bash
+npm install @upstash/ratelimit @upstash/redis
+```
+
+Add the following environment variables to your `.env.local`:
+```env
+UPSTASH_REDIS_REST_URL=your_upstash_redis_rest_url
+UPSTASH_REDIS_REST_TOKEN=your_upstash_redis_rest_token
+```
+
+> You can obtain these credentials from the **Details** tab of your database on the [Upstash dashboard](https://console.upstash.com/).
+
+---
+
+## Next Steps & Improvements
 * Add a true idle animation state.
 * Introduce object-aware interactions.
 * Support chained commands (“Walk forward and wave”).
